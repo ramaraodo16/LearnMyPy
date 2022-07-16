@@ -10,10 +10,11 @@ mnum = dt.month
 year = dt.year
 ymdnum = year*10000+(mnum*100)+dnum
 ymnum= year*100+mnum
+stdnum = 20220715
 
 files = []
 #files1 = []
-for k in range(2017,2023):
+for k in range(2022,2023):
     #print(k)
     
     #monts= ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
@@ -30,7 +31,7 @@ for k in range(2017,2023):
         else:
             break
         for i in range(1,31):
-            if (ymdnum >= k*10000+val*100+i):
+            if ((ymdnum >= k*10000+val*100+i) & (stdnum <= k*10000+val*100+i)):
             
                 filename= 'cm'+str(i).zfill(2)+key+str(k)+'bhav'
                 #print('\n'+filename)
@@ -45,7 +46,10 @@ for k in range(2017,2023):
                 except:
                     pass
             else:
-                break
+                if(ymdnum >= k*10000+val*100+i):
+                    pass
+                else:
+                    break
     monkey_it.clear
 print(files)
 
